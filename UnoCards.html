@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capitol UNO - EI Card Chain Expanded</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f8f8f8; text-align: center; padding: 20px; }
+    .deck { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+    .card { background: white; border-radius: 10px; border: 2px solid #ccc; width: 200px; height: 120px; margin: 10px; padding: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+    .card.red { border-color: #e63946; }
+    .card.yellow { border-color: #ffb703; }
+    .card.green { border-color: #2a9d8f; }
+    .card.blue { border-color: #457b9d; }
+    .chosen { background-color: #e0f7fa; }
+    button { padding: 10px 20px; margin-top: 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Capitol UNO - Emotional Intelligence Expanded Prototype</h1>
+  <p>Step 1: Draw a random <strong>Trigger</strong> card. Step 2: Pick a Reaction, Regulation, and Leadership Impact card to build your chain.</p>
+
+  <div id="trigger-area">
+    <button onclick="drawTrigger()">Draw Random Trigger</button>
+    <div id="trigger-card"></div>
+  </div>
+
+  <h2>Reaction Cards</h2>
+  <div id="reactions" class="deck"></div>
+
+  <h2>Regulation Tools</h2>
+  <div id="regulations" class="deck"></div>
+
+  <h2>Leadership Impacts</h2>
+  <div id="impacts" class="deck"></div>
+
+<script>
+  const triggers = [
+    'Someone interrupts you mid-sentence in a meeting.',
+    'A teammate ignores your idea during brainstorming.',
+    'You receive critical feedback in public.',
+    'A peer takes credit for your work.',
+    'You are left out of a key meeting with your team.',
+    'You are asked to present with no prep time.',
+    'You overhear a colleague making a sarcastic comment about you.',
+    'A team member repeatedly shows up late to an important project call.',
+    'Your suggestion is dismissed without explanation.',
+    'Someone challenges your decision in a heated tone during a meeting.',
+    'A team member refuses to follow a clear instruction.',
+    'You discover a mistake in your work pointed out harshly by a client.',
+    'A colleague publicly questions your competence.',
+    'An important email you sent is ignored for days.',
+    'Your boss gives you conflicting instructions under pressure.',
+    'A peer spreads a rumor about your leadership decision.',
+    'Someone repeatedly checks their phone while you’re speaking.',
+    'Your hard work is met with indifference.',
+    'You are unfairly blamed for a missed deadline.',
+    'You say something and the group ignores you.',
+    'You speak in a Zoom call and everyone has their camera off.',
+    'You are assigned a group project and no one else contributes.',
+    'Your boss asks you to do an impossible amount of work.',
+    'A colleague asks you to do something that goes against your values.',
+    'You repeat the same instruction multiple times without being heard.',
+    'Someone seems not to be paying attention to what you are saying.',
+    'You feel overwhelmed with work, and someone piles on even more.'
+  ];
+
+  const reactions = [
+    'Snap back sarcastically.',
+    'Go silent and withdraw.',
+    'Raise your voice to be heard.',
+    'Defend your idea aggressively.',
+    'Roll your eyes and mutter something under your breath.',
+    'Shift focus and avoid further discussion.',
+    'Take a deep breath and pause.',
+    'Ask for clarification calmly.',
+    'Listen actively before responding.',
+    'Acknowledge the tension in the room before proceeding.',
+    'Other (describe your own reaction).'
+  ];
+
+  const regulations = [
+    'Count to 10 before speaking.',
+    'Take a short walk before responding.',
+    'Pause and write your thoughts before replying.',
+    'Use a sentence starter like “I feel ___ because ___.”',
+    'Repeat back what you heard to ensure understanding.',
+    'Visualize a positive outcome before responding.',
+    'Focus on your values and goals before you speak.',
+    'Take deep breaths to reset your tone.',
+    'Seek feedback from a trusted peer afterward.',
+    'Remind yourself of past successes to regain calm.',
+    'Other (describe your own strategy).'
+  ];
+
+  const impacts = [
+    'Team feels safe to speak openly.',
+    'Trust is damaged and team withdraws.',
+    'Conflict de-escalates quickly.',
+    'Your reaction inspires others to stay calm.',
+    'People start modeling your emotional regulation.',
+    'Collaboration improves and creativity flows.',
+    'Your reaction creates distance with teammates.',
+    'Tension rises and productivity drops.',
+    'Your honesty and calm build credibility as a leader.',
+    'The team recovers quickly and refocuses on solutions.',
+    'Other (describe potential impact).'
+  ];
+
+  function drawTrigger() {
+    const card = triggers[Math.floor(Math.random() * triggers.length)];
+    document.getElementById('trigger-card').innerHTML = `<div class='card red'>${card}</div>`;
+  }
+
+  function createCards(containerId, items, color) {
+    const container = document.getElementById(containerId);
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card ' + color;
+      card.innerText = item;
+      card.onclick = () => card.classList.toggle('chosen');
+      container.appendChild(card);
+    });
+  }
+
+  createCards('reactions', reactions, 'yellow');
+  createCards('regulations', regulations, 'green');
+  createCards('impacts', impacts, 'blue');
+</script>
+</body>
+</html>
